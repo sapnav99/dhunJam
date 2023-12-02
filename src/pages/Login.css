@@ -1,0 +1,56 @@
+.mainpage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 50%;
+  bottom: 50%;
+  height: 100%;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+.inputs input {
+  border: solid 1px #ffff;
+  background-color: #030303;
+  color: white;
+  font-size: 12px;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  padding: 5px;
+}
+.inputs input:hover,
+.inputs input:focus {
+  border: solid 1px #ffff;
+  background-color: #030303;
+}
+.logbutton {
+  color: white;
+  background-color: #6741d9;
+  width: 300px;
+  border-radius: 10px;
+  margin-top: 30px;
+  height: 40px;
+}
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 80%;
+  transform: translateY(-50%);
+  color: white;
+}
+.icon:hover{
+    cursor: pointer;
+}
+.reg {
+  color: white;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.reg:hover {
+  cursor: pointer;
+}
