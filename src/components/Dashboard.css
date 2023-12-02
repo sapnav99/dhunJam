@@ -1,0 +1,62 @@
+.dashboard{
+margin-top: -300px;
+padding-top: 250px;
+}
+.dashboard h3{
+  color: white;
+  margin-left: 50px;
+}
+.song1 {
+  margin-top: 20px; 
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-size: 16px;
+}
+
+.dashboardValue{
+  
+}
+
+.dashp{
+color: white;
+display: flex;
+flex-direction: row;
+}
+.dashp input{
+  margin-left: 50px;
+  width: 300px;
+  padding: 5px;
+  background-color: #030303;
+  border: solid 1px white;
+  border-radius: 10px;
+  color: white;
+}
+.category{
+  color: white;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.category input {
+  width: 65px;
+  padding: 5px;
+  color: white;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #030303;
+  border:  solid 1px white;
+  margin-right: 10px;
+}
+.savebtn{
+  width: 600px;
+  background-color: #6741D9;
+  height: 35px;
+  border-radius: 10px;
+  border: solid 1px white;
+  color: white;
+}
+.savebtn:hover{
+  background-color: #F0C3F1;
+  color: black;
+}

@@ -1,0 +1,9 @@
+.app {
+    font-family: 'Poppins', sans-serif;
+    background-color: #030303; 
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
