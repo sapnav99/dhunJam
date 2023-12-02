@@ -7,19 +7,9 @@ export default function DashboardValues() {
   const [isLoading, setIsLoading] = useState(false);
   const [customSongRequestAmount, setCustomSongRequestAmount] = useState();
   const [regularAmounts, setRegularAmounts] = useState([0, 0, 0, 0]);
+  const minValues = [79, 59, 39, 19];
 
-  const handleSaveClick = () => {
-    if (customSongRequestAmount < 99 && customSongRequestAmount !== undefined) {
-      alert("Minimum custom song request value should be 99");
-    }
-    if(regularAmounts<[79, 59, 39, 19]){
-      alert("Minimum values must be 79, 59, 39, 19")
-    } else {
-      alert("data saved successfully");
-      setCustomSongRequestAmount();
-      setRegularAmounts([0,0,0,0])
-    }
-  };
+ 
   const data = [
     { name: "Custom", value: parseInt(customSongRequestAmount, 10) || 0 },
     { name: "Category1", value: regularAmounts[0] },
@@ -35,13 +25,22 @@ export default function DashboardValues() {
   };
   
 
-  useEffect(() => {
+ 
     const putPriceData = async () => {
       try {
         setIsLoading(true);
+        console.log('amount');
+        console.log(customSongRequestAmount);
         const response = await axios.put(
-          "https://stg.dhunjam.in/account/admin/4"
+          "https://stg.dhunjam.in/account/admin/4",{
+            amount:{
+              category_6:customSongRequestAmount
+            }
+              
+            
+          }
         );
+        console.log(response);
 
         if (response.data && response.data.response === "Success") {
         //   setUserData(response.data.data);
@@ -50,14 +49,31 @@ export default function DashboardValues() {
           );
         }
       } catch (error) {
-        console.error("Error fetching user data", error);
+        console.error("Error fetching data", error);
       } finally {
         setIsLoading(false);
       }
     };
 
+    
+ 
+
+  const handleSaveClick = () => {
+    if (customSongRequestAmount < 99 && customSongRequestAmount !== undefined) {
+      alert("Minimum custom song request value should be 99");
+      return;
+    }
+    for (let i = 0; i < minValues.length; i++) {
+      if(regularAmounts[i] < minValues[i]){
+        alert("Minimum values must be 79, 59, 39, 19");
+        return;
+      }
+    } 
+    alert("data saved successfully");
     putPriceData();
-  }, []);
+    setCustomSongRequestAmount();
+    setRegularAmounts([0,0,0,0])
+  };
   return (
     <div className="dashboardValue">
       <div className="dashp">
@@ -67,6 +83,7 @@ export default function DashboardValues() {
           type="tex"
           value={customSongRequestAmount}
           onChange={(e) => setCustomSongRequestAmount(e.target.value)}
+          
         />
       </div>
       <div className="category">
