@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis } from "recharts";
 import axios from "axios";
 import './Dashboard.css'
+import { useLocation } from "react-router-dom";
 
 export default function DashboardValues() {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +25,8 @@ export default function DashboardValues() {
     setRegularAmounts(newRegularAmounts);
   };
   
-
+  const location = useLocation(); 
+  const userId = location.state?.userId; 
  
     const putPriceData = async () => {
       try {
@@ -32,7 +34,7 @@ export default function DashboardValues() {
         console.log('amount');
         console.log(customSongRequestAmount);
         const response = await axios.put(
-          "https://stg.dhunjam.in/account/admin/4",{
+          `https://stg.dhunjam.in/account/admin/${userId}`,{
             amount:{
               category_6:customSongRequestAmount
             }

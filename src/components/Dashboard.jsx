@@ -3,6 +3,7 @@ import "./Dashboard.css";
 import axios from "axios";
 import DashboardValues from "./DashboardValues";
 import DashboardValues1 from "./DashboardValues1";
+import { useLocation } from "react-router-dom";
 
 export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,12 +12,15 @@ export default function Dashboard() {
   const handleChargeOptionChange = (option) => {
     setChargeOption(option);
   };
+  const location = useLocation(); 
+  const userId = location.state?.userId; 
+  
   useEffect(() => {
     const getUserData = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          "https://stg.dhunjam.in/account/admin/4"
+          `https://stg.dhunjam.in/account/admin/${userId}`
         );
 
         if (response.data && response.data.response === "Success") {
@@ -30,7 +34,7 @@ export default function Dashboard() {
     };
 
     getUserData();
-  }, []);
+  }, [userId]);
   return (
     <div className="dashboard">
       <h3>

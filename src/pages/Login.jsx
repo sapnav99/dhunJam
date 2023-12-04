@@ -33,10 +33,11 @@ export default function Login() {
           password: password,
         }
       );
-
+      const userId= response.data.data.id
+console.log("id",userId);
       if (response.data && response.data.response === "Success") {
         console.log("Logged in successfully");
-        navigate("/dashboard");
+        navigate("/dashboard", { state: { userId: response.data.data.id } });
       }
     } catch (error) {
       console.error("Error in login", error);
